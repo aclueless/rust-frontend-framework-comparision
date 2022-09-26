@@ -6,6 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-#spair = "0.0.6"
-spair = { path = "../../../spair" }
+spair = { git = "https://github.com/aclueless/spair.git" }
 spair_shared = { path = "../spair_shared", features = ["non-keyed-app"] }
