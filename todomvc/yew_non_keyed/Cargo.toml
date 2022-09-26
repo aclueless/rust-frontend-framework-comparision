@@ -1,0 +1,19 @@
+[package]
+name = "todomvc_yew_non_keyed"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+todomvc_shared = { path = "../todomvc_shared" }
+#yew = { version = "0.19.3", features = ["csr"] }
+yew = { git = "https://github.com/yewstack/yew.git", features = ["csr"] }
+wasm-bindgen = "0.2"
+strum = "0.24"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+	"HtmlInputElement",
+]
