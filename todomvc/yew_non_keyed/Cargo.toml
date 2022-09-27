@@ -18,7 +18,7 @@ features = [
 	"HtmlInputElement",
 ]
 
-[profile.releasez]
+[profile.release]
 lto = true
 codegen-units = 1
 panic = "abort"
