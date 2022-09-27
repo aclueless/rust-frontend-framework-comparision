@@ -9,15 +9,21 @@ then extract them to a `framework_name_shared`, similar to `spair_shared`.
 
 Build
 
-rustc 1.64.0 (a55dd71d5 2022-09-19)
-trunk 0.16.0
+    rustc 1.64.0 (a55dd71d5 2022-09-19)
+    trunk 0.16.0
 
-trunk build --release
+    trunk build --release
 
-Results
+All builds have these (you can see this in `Cargo.toml` at root)
 
-| Implementations | Size (kb) |
-|-----------------|-----------|
-| spair keyed     | 202.1     |
-| spair non keyed | 172.5     |
-| yew non keyed   | 298.1     |
+    [profile.release]
+    lto = true
+    codegen-units = 1
+
+Size of the `.wasm` file, in kB:
+
+| Implementations | opt-level = default | opt-level = "s" | opt-level = "z" |
+|-----------------|---------------------|-----------------|-----------------|
+| spair keyed     | 176.6               | 148.9           | 138.0           |
+| spair non keyed | 146.6               | 132.8           | 125.5           |
+| yew non keyed   | 249.8               | 203.8           | 189.7           |

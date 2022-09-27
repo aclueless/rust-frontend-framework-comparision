@@ -671,18 +671,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "todomvc_yew_non_keyed_single_crate"
-version = "0.1.0"
-dependencies = [
- "gloo-storage",
- "serde",
- "strum",
- "wasm-bindgen",
- "web-sys",
- "yew",
-]
-
-[[package]]
 name = "tracing"
 version = "0.1.36"
 source = "registry+https://github.com/rust-lang/crates.io-index"
