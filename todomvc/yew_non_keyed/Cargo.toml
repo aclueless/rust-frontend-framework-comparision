@@ -17,9 +17,3 @@ version = "0.3"
 features = [
 	"HtmlInputElement",
 ]
-
-[profile.release]
-lto = true
-codegen-units = 1
-panic = "abort"
-opt-level = "z"
