@@ -561,6 +561,7 @@ dependencies = [
 [[package]]
 name = "spair"
 version = "0.0.6"
+source = "git+https://github.com/aclueless/spair.git#1c1a7feb232e89ec30fa3f04b75c5c977b6b92cb"
 dependencies = [
  "http",
  "js-sys",
@@ -604,9 +605,9 @@ dependencies = [
 
 [[package]]
 name = "syn"
-version = "1.0.100"
+version = "1.0.101"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "52205623b1b0f064a4e71182c3b18ae902267282930c6d5462c91b859668426e"
+checksum = "e90cde112c4b9690b8cbe810cba9ddd8bc1d7472e2cae317b69e9438c1cba7d2"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -676,6 +677,7 @@ dependencies = [
  "gloo-storage",
  "serde",
  "strum",
+ "wasm-bindgen",
  "web-sys",
  "yew",
 ]
@@ -805,7 +807,7 @@ dependencies = [
 [[package]]
 name = "yew"
 version = "0.19.3"
-source = "git+https://github.com/yewstack/yew.git#6aa5b1660184fd16031fdd76b75b863f38b8b203"
+source = "git+https://github.com/yewstack/yew.git#6c91afa13e2dca77d1c590aade6fb230cf31366a"
 dependencies = [
  "console_error_panic_hook",
  "futures",
@@ -828,7 +830,7 @@ dependencies = [
 [[package]]
 name = "yew-macro"
 version = "0.19.3"
-source = "git+https://github.com/yewstack/yew.git#6aa5b1660184fd16031fdd76b75b863f38b8b203"
+source = "git+https://github.com/yewstack/yew.git#6c91afa13e2dca77d1c590aade6fb230cf31366a"
 dependencies = [
  "boolinator",
  "once_cell",

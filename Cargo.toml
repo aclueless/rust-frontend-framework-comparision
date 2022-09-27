@@ -2,3 +2,5 @@
 members = [
 	"todomvc/*",
 ]
+
+resolver = "2"
