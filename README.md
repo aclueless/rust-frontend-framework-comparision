@@ -6,4 +6,5 @@ that are not framework-related should be the same. Such as, all
 implementations should use the same type for item's id, or use the
 same third party crates.
 
-Currently there are only implementations of Spair, Yew for TodoMVC app.
+Currently there are only implementations of some frameworks for TodoMVC app.
+
