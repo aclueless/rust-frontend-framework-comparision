@@ -6,12 +6,11 @@ use gloo_storage::{LocalStorage, Storage, errors::StorageError};
 pub struct Todos {
     pub entries: Vec<TodoEntry>,
     pub filter: Filter,
-    next_id: u32,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TodoEntry {
-    pub id: u32,
+    pub id: uuid::Uuid,
     pub description: String,
     pub completed: bool,
 }
@@ -54,7 +53,6 @@ impl Todos {
             Err(_) => Self {
                 entries: Vec::new(),
                 filter: Filter::All,
-                next_id: 1,
             }
         }
     }
@@ -65,11 +63,10 @@ impl Todos {
 
     pub fn new_entry(&mut self, description: String) {
         self.entries.push(TodoEntry {
-            id: self.next_id,
+            id: uuid::Uuid::new_v4(),
             description,
             completed: false,
         });
-        self.next_id += 1;
     }
 
     pub fn entry_count(&self) -> usize {
@@ -97,8 +94,8 @@ impl Todos {
             .retain(|e| !e.completed);
     }
 
-    pub fn get_entry_by_id_mut(&mut self, id: u32) -> Option<&mut TodoEntry> {
-        self.entries.iter_mut().find(|e| e.id == id)
+    pub fn get_entry_by_id_mut(&mut self, id: &uuid::Uuid) -> Option<&mut TodoEntry> {
+        self.entries.iter_mut().find(|e| e.id == *id)
     }
 
     pub fn get_filtered_entries(&self) -> impl Iterator<Item = &TodoEntry> {
@@ -121,8 +118,8 @@ impl Todos {
         }
     }
 
-    pub fn remove_by_id(&mut self, id: u32) {
-        self.entries.retain(|e| e.id != id);
+    pub fn remove_by_id(&mut self, id: &uuid::Uuid) {
+        self.entries.retain(|e| e.id != *id);
     }
 
     pub fn remove_by_index(&mut self, index: usize) {

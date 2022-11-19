@@ -22,7 +22,7 @@ pub struct Todo {
 impl Todo {
     pub fn new(id: u32, title: String) -> Arc<Self> {
         Arc::new(Self {
-            id: id,
+            id,
             title: Mutable::new(title),
             completed: Mutable::new(false),
             editing: Mutable::new(None),

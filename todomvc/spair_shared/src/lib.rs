@@ -16,7 +16,7 @@ use non_keyed::*;
 
 pub struct App {
     data: Todos,
-    editing_id: Option<u32>,
+    editing_id: Option<uuid::Uuid>,
     new_description: String,
 }
 
@@ -36,7 +36,7 @@ impl App {
         self.save_data();
     }
 
-    fn toggle_completion(&mut self, id: u32) {
+    fn toggle_completion(&mut self, id: uuid::Uuid) {
         if let Some(e) = self.data.get_entry_by_id_mut(id) {
             e.toggle_completion();
         }
@@ -44,7 +44,7 @@ impl App {
         self.save_data()
     }
 
-    fn remove_by_id(&mut self, id: u32) {
+    fn remove_by_id(&mut self, id: uuid::Uuid) {
         self.data.remove_by_id(id);
 
         self.save_data();
@@ -67,7 +67,7 @@ impl App {
         self.save_data();
     }
 
-    fn start_editing(&mut self, id: u32) {
+    fn start_editing(&mut self, id: uuid::Uuid) {
         self.editing_id = Some(id);
     }
 

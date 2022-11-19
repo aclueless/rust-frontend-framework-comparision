@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 spair = { git = "https://github.com/aclueless/spair.git" }
 todomvc_shared = { path = "../todomvc_shared" }
+uuid = { version = "1", features = ["v4", "js", "serde"] }
 
 [features]
 keyed-app = ["spair/keyed-list"]
