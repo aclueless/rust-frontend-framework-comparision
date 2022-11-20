@@ -1,5 +1,4 @@
 use std::sync::Arc;
-use std::cell::Cell;
 use web_sys::{Url, HtmlInputElement};
 use serde_derive::{Serialize, Deserialize};
 use futures_signals::signal::{Signal, SignalExt, Mutable};
@@ -47,8 +46,6 @@ impl Default for Route {
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct App {
-    todo_id: Cell<u32>,
-
     #[serde(skip)]
     new_todo_title: Mutable<String>,
 
@@ -61,7 +58,6 @@ pub struct App {
 impl App {
     fn new() -> Arc<Self> {
         Arc::new(App {
-            todo_id: Cell::new(0),
             new_todo_title: Mutable::new("".to_owned()),
             todo_list: MutableVec::new(),
             route: Mutable::new(Route::default()),
@@ -95,10 +91,7 @@ impl App {
 
         // Only create a new Todo if the text box is not empty
         if let Some(trimmed) = trim(&title) {
-            let id = self.todo_id.get();
-            self.todo_id.set(id + 1);
-
-            self.todo_list.lock_mut().push_cloned(Todo::new(id, trimmed.to_string()));
+            self.todo_list.lock_mut().push_cloned(Todo::new(uuid::Uuid::new_v4(), trimmed.to_string()));
 
             *title = "".to_string();
 

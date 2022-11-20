@@ -12,12 +12,12 @@ const KEY: &str = "yew.todomvc.self";
 
 pub enum Msg {
     Add(String),
-    Edit((u32, String)),
-    Remove(u32),
+    Edit((uuid::Uuid, String)),
+    Remove(uuid::Uuid),
     SetFilter(Filter),
     ToggleAll,
-    ToggleEdit(u32),
-    Toggle(u32),
+    ToggleEdit(uuid::Uuid),
+    Toggle(uuid::Uuid),
     ClearCompleted,
     Focus,
 }
@@ -25,7 +25,7 @@ pub enum Msg {
 pub struct App {
     data: Todos,
     edit_value: String,
-    editing_id: Option<u32>,
+    editing_id: Option<uuid::Uuid>,
 
     focus_ref: NodeRef,
 }
@@ -51,20 +51,20 @@ impl Component for App {
             }
             Msg::Edit((id, edit_value)) => {
                 if edit_value.is_empty() {
-                    self.data.remove_by_id(id);
-                } else if let Some(e) = self.data.get_entry_by_id_mut(id) {
+                    self.data.remove_by_id(&id);
+                } else if let Some(e) = self.data.get_entry_by_id_mut(&id) {
                     e.description = edit_value;
                 }
                 self.edit_value = "".to_string();
             }
             Msg::Remove(id) => {
-                self.data.remove_by_id(id);
+                self.data.remove_by_id(&id);
             }
             Msg::SetFilter(filter) => {
                 self.data.filter = filter;
             }
             Msg::ToggleEdit(id) => {
-                self.edit_value = self.data.get_entry_by_id_mut(id).unwrap_throw().description.clone();
+                self.edit_value = self.data.get_entry_by_id_mut(&id).unwrap_throw().description.clone();
                 self.editing_id = Some(id);
             }
             Msg::ToggleAll => {
@@ -72,7 +72,7 @@ impl Component for App {
                 self.data.set_completed_for_all(status);
             }
             Msg::Toggle(id) => {
-                self.data.get_entry_by_id_mut(id).unwrap_throw().toggle_completion();
+                self.data.get_entry_by_id_mut(&id).unwrap_throw().toggle_completion();
             }
             Msg::ClearCompleted => {
                 self.data.clear_completed();

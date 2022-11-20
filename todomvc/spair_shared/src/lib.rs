@@ -37,7 +37,7 @@ impl App {
     }
 
     fn toggle_completion(&mut self, id: uuid::Uuid) {
-        if let Some(e) = self.data.get_entry_by_id_mut(id) {
+        if let Some(e) = self.data.get_entry_by_id_mut(&id) {
             e.toggle_completion();
         }
 
@@ -45,7 +45,7 @@ impl App {
     }
 
     fn remove_by_id(&mut self, id: uuid::Uuid) {
-        self.data.remove_by_id(id);
+        self.data.remove_by_id(&id);
 
         self.save_data();
     }

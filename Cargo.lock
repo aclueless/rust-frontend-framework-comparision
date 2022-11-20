@@ -53,12 +53,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c1ad822118d20d2c234f427000d5acc36eabe1e29a348c89b63dd60b13f28e5d"
 
 [[package]]
-name = "bytes"
-version = "1.2.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec8a7b6a70fde80372154c65702f00a0f56f3e1c36abbc6c440484be248856db"
-
-[[package]]
 name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -415,17 +409,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b8e7479fa1ef38eb49fb6a42c426be515df2d063f06cb8efd3e50af073dbc26c"
 dependencies = [
  "utf8-width",
-]
-
-[[package]]
-name = "http"
-version = "0.2.8"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "75f43d41e26995c17e71ee126451dd3941010b0514a81a9d11f3b341debc2399"
-dependencies = [
- "bytes",
- "fnv",
- "itoa",
 ]
 
 [[package]]
@@ -801,14 +784,14 @@ checksum = "2fd0db749597d91ff862fd1d55ea87f7855a744a8425a64695b6fca237d1dad1"
 
 [[package]]
 name = "spair"
-version = "0.0.6"
-source = "git+https://github.com/aclueless/spair.git#1c1a7feb232e89ec30fa3f04b75c5c977b6b92cb"
+version = "0.0.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4bc803b1fe63ce93cd3eecbf988d22364b524c4c8bced2f3f4198b967f316e74"
 dependencies = [
- "http",
  "js-sys",
  "log",
- "serde",
  "thiserror",
+ "uuid 1.2.2",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "web-sys",
@@ -962,6 +945,7 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
+ "uuid 1.2.2",
  "web-sys",
 ]
 
@@ -1019,6 +1003,7 @@ version = "0.1.0"
 dependencies = [
  "strum",
  "todomvc_shared",
+ "uuid 1.2.2",
  "wasm-bindgen",
  "web-sys",
  "yew",

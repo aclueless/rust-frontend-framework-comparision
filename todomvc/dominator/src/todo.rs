@@ -11,7 +11,7 @@ use crate::app::{App, Route};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Todo {
-    id: u32,
+    id: uuid::Uuid,
     title: Mutable<String>,
     pub completed: Mutable<bool>,
 
@@ -20,7 +20,7 @@ pub struct Todo {
 }
 
 impl Todo {
-    pub fn new(id: u32, title: String) -> Arc<Self> {
+    pub fn new(id: uuid::Uuid, title: String) -> Arc<Self> {
         Arc::new(Self {
             id,
             title: Mutable::new(title),

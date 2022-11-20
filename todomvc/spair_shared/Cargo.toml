@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-spair = { git = "https://github.com/aclueless/spair.git" }
+spair = "0.0.9"
 todomvc_shared = { path = "../todomvc_shared" }
 uuid = { version = "1", features = ["v4", "js", "serde"] }
 

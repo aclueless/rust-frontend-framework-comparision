@@ -2,10 +2,10 @@ use spair::prelude::*;
 
 pub const KEY: &str = "todos-spair-keyed";
 
-impl<'k, 'a> spair::Keyed<'k> for super::RenderEntry<'a> {
+impl<'a> spair::Keyed for super::RenderEntry<'a> {
     type Key = uuid::Uuid;
-    fn key(&self) -> Self::Key {
-        self.0.id
+    fn key(&self) -> &Self::Key {
+        &self.0.id
     }
 }
 
